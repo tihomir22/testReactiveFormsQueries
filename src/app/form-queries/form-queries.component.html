@@ -1,0 +1,28 @@
+<div [formGroup]="myForm">
+  Valor : {{ myForm.value | json }}
+  <hr>
+
+
+  <div formArrayName="queries">
+    <div *ngFor="let query of queriesArray;let i=index" [formGroupName]="i">
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          {{query.nombre}}
+        </mat-expansion-panel-header>
+        <mat-form-field>
+          <input matInput placeholder="nombre" formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="valor" formControlName="valor">
+        </mat-form-field>
+        {{myForm.value.queries[i].valor}}
+      </mat-expansion-panel>
+    </div>
+  </div>
+
+  <div>
+    <button mat-button (click)="generarQuery('dembow','loco')">Anyadir nueva query</button>
+  </div>
+
+</div>
